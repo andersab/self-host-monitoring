@@ -17,3 +17,13 @@ scrape_configs:
       - targets: ["localhost:9090"]
         labels:
           app: "prometheus"
+  - job_name: 'node_exporter'
+    static_configs:
+      - targets: 
+          - 'pi5-16-02:9100'
+          - 'pi5-16-03:9100'
+          - 'pi5-16-04:9100'
+          - 'pi5-16-05:9100'
+          - 'pi5-16-06:9100'
+        labels:
+          app: "node-exporter"
