@@ -25,20 +25,6 @@ services:
       #- GF_SERVER_ROOT_URL=http://localhost:3000
     restart: unless-stopped
   
-#  cadvisor:
-#    image: google/cadvisor:latest
-#    container_name: cadvisor
-#    volumes:
-#      - /:/rootfs:ro
-#      - /var/run:/var/run:ro
-#      - /sys:/sys:ro
-#      - /var/lib/docker/:/var/lib/docker:ro
-#    ports:
-#      - "8080:8080"
-#    restart: unless-stopped
-#    devices:
-#      - "/dev/kmsg:/dev/kmsg:ro"
-#
   node-exporter:
     image: prom/node-exporter:latest
     container_name: node-exporter
@@ -55,6 +41,20 @@ services:
       - '--path.proc=/host/proc'
       - '--path.sys=/host/sys'
       - '--collector.filesystem.ignored-mount-points="^/(sys|proc|dev|host|etc)($$|/)"'
+#  cadvisor:
+#    image: google/cadvisor:latest
+#    container_name: cadvisor
+#    volumes:
+#      - /:/rootfs:ro
+#      - /var/run:/var/run:ro
+#      - /sys:/sys:ro
+#      - /var/lib/docker/:/var/lib/docker:ro
+#    ports:
+#      - "8080:8080"
+#    restart: unless-stopped
+#    devices:
+#      - "/dev/kmsg:/dev/kmsg:ro"
+#
 
 volumes:
   prometheus_data:
