@@ -34,13 +34,13 @@ services:
     network_mode: "host"
     pid: "host"
     volumes:
-      - /proc:/host/proc:ro
-      - /sys:/host/sys:ro
+      # - /proc:/host/proc:ro
+      # - /sys:/host/sys:ro
       - /:/host:ro,rslave
     command:
-      - '--path.proc=/host/proc'
-      - '--path.sys=/host/sys'
-      - '--collector.filesystem.ignored-mount-points="^/(sys|proc|dev|host|etc)($$|/)"'
+#      - '--path.proc=/host/proc'
+      - '--path.rootfs=/host'
+#      - '--collector.filesystem.ignored-mount-points="^/(sys|proc|dev|host|etc)($$|/)"'
 #  cadvisor:
 #    image: google/cadvisor:latest
 #    container_name: cadvisor
